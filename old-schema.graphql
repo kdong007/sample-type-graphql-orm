@@ -1,0 +1,80 @@
+"""
+#----------------- plain data types
+"""
+type Name {
+    firstName: String!
+    lastName: String!
+    fullName: String!
+}
+
+type Student {
+    id: ID!
+    name: Name!
+    courses: [Course!]!
+    friends: [Student!]!
+}
+
+type Course {
+    id: ID!
+    name: String!
+    students: [Student!]!
+}
+
+"""
+----------------- queries
+"""
+type Query {
+    searchStudents(keyword: String): [Student!]!
+
+    student(id: ID!): Student
+    # studentByName(name:String!)
+
+    searchCourses(keyword: String): [Course!]!
+
+    course(id: ID!): Course
+}
+
+"""
+#----------------- mutation results
+"""
+type StudentResult {
+    success: Boolean!
+    failureReason: String
+    student: Student
+}
+
+input AddStudentInput {
+    id: ID
+    firstName: String!
+    lastName: String!
+}
+
+input EditStudentInput {
+    firstName: String
+    lastName: String
+}
+
+type StudentEnrollmentResult {
+    success: Boolean!
+    failureReason: String
+    student: Student
+}
+
+type StudentFriendshipResult {
+    success: Boolean!
+    failureReason: String
+    students: [Student!]
+}
+"""
+#----------------- mutations
+"""
+type Mutation {
+    addStudent(student: AddStudentInput!): StudentResult!
+    editStudent(id: ID!, updates: EditStudentInput!): StudentResult!
+
+    enrollCourse(studentId: ID!, courseId: ID!): StudentEnrollmentResult!
+    dropCourse(studentId: ID!, courseId: ID!): StudentEnrollmentResult!
+
+    addFriend(student1: ID!, student2: ID!): StudentFriendshipResult!
+    unFriend(student1: ID!, student2: ID!): StudentFriendshipResult!
+}

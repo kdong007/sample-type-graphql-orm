@@ -1,0 +1,40 @@
+
+ problem with sample graphql project
+
+
+Graphql 
+ - schema first
+    - use in sample-graphql project
+    - "write schema"
+    - implement the logic as resolvers
+    - combine schema and resolvers together
+
+    - lacking smoothie typing support 
+
+    - used graphql-codegen
+        - analyze schema and generate typescript typing
+        - many edge cases, 
+
+    - write similar codes twice for schema and db model/entities
+        - * if you don't use ORM, then you won't have this problem
+
+ - code first
+    - many code-first frameworks typescript graphql
+    - type-graphql is just one of them
+    - it use similar tech as typeORM
+    
+    - decorator pattern
+    - type-refection
+        - similar to java's refection system,
+        - C/C++ 's marco
+
+    - use your class as templates, 
+        - type-graphql -> generate schema
+        - type-ORM -> generate sql related things
+
+
+1. re implement sample-graphql 
+    - both db + graphql 
+
+2. start with graphql
+    - using type-graphql generate schema match with old schema
