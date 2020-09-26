@@ -18,6 +18,10 @@ import { Field, ObjectType, Query } from "type-graphql";
 
 @ObjectType()
 export default class Name {
+    constructor(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
     @Field()
     firstName: string;
 
